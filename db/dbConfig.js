@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/reference');
 
-console.log('Mongoose is:', mongoose);
 
 
 ///////////////////////////// SCHEMA DEFINITIONS ////////////////////////////////
