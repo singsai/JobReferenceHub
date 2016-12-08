@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var express = require('express');
 var email = require('./email.js');
 
