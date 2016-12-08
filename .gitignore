@@ -7,3 +7,5 @@ dist/
 
 # Test Helpers
 db-test-server.js
+
+db/data/
