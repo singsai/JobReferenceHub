@@ -1,4 +1,4 @@
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 
 
 // Hashes password
@@ -7,14 +7,14 @@ var hashPass = function (userPassword, saltRounds) {
 };
 
 // Compares DB password hash with input user password
-var comparePass = function(dbPass, dbHash, cb) {
-  bcrypt.compare(dbPass, dbHash, function(err, res) {
+var comparePass = function(userPassword, dbHash, cb) {
+  bcrypt.compare(userPassword, dbHash, function(err, res) {
     // res == true
     if (err) {
       console.log(err);
-      return cb(err);
+      return;
     }
-    cb(null, res);
+    cb(res);
   });
 };
 
