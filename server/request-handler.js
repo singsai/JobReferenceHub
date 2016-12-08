@@ -1,4 +1,4 @@
-var db = require('../db/database-config.js');
+var db = require('../db/dbConfig.js');
 var User = db.User;
 var Reference = db.Reference;
 var express = require('express');
