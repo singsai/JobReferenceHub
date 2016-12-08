@@ -10,6 +10,8 @@ db.once('open', function() {
 ///////////////////////////// SCHEMA DEFINITIONS ////////////////////////////////
 var userSchema = mongoose.Schema({
   id: Number,
+  username: String,
+  password: String,
   firstName: String,
   middleName: String,
   lastName: String,
@@ -28,8 +30,35 @@ var userSchema = mongoose.Schema({
   references: Array
 });
 
+var refSchema = mongoose.Schema({
+  id: Number,
+  author: String,
+  authorDetails: {
+    // Most recent is current company. If no current company -- pass null. ([null, Google, Apple, etc...])
+    companies: Array,
+    // 1-to-1 mapping with companies.
+    roles: Array
+    // Add properties as needed.
+    // Here...
+    // Here...
+    // Etc ... 
+  },
+  reference: {
+    header: String,
+    body: String,
+    // May not be used, but potentially worth having.
+    ratings: Array
+  }
+});
+
 //////////////////////////// CREATE MODELS ///////////////////////////////////
 
 var User = mongoose.model('User', userSchema);
+var Reference = mongoose.model('Reference', refSchema);
 
-module.exports = User;
+// We'll store our models here.
+var models = {};
+models.User = User;
+models.Reference = Reference;
+
+module.exports = models;
