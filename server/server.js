@@ -9,7 +9,7 @@ var User = require('./../db/dbConfig.js').User;
 var Reference = require('./../db/dbConfig.js').Reference;
 var expressSession = require('express-session');
 // var email = require('./email.js');
-var bcrypt = require('bcrypt');
+var bcrypt = require('bcrypt-nodejs');
 var salt = bcrypt.genSaltSync(10);
 var auth = require('./hash.js');
 
