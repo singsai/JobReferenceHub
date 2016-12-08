@@ -4,12 +4,6 @@ var Schema = mongoose.Schema;
 
 mongoose.connect('mongodb://localhost/reference');
 
-// Define our connection object.
-// var db = mongoose.connection();
-//   db.once('open', function() {
-//   // connected
-// });
-
 ///////////////////////////// SCHEMA DEFINITIONS ////////////////////////////////
 var userSchema = new Schema({
   id: Number,

@@ -2,15 +2,16 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var express = require('express');
-var User = require('./../db/database-config.js').User;
-var Reference = require('./../db/database-config.js').Reference;
+var app = express();
+var path = require('path');
+var handler = require('./request-handler.js');
+var User = require('./../db/dbConfig.js').User;
+var Reference = require('./../db/dbConfig.js').Reference;
 var expressSession = require('express-session');
 // var email = require('./email.js');
 var bcrypt = require('bcrypt');
 var salt = bcrypt.genSaltSync(10);
 var auth = require('./hash.js');
-
-var app = express();
 
 app.use(expressSession({
   secret: 'ambitious-elm',
@@ -31,10 +32,9 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
+//app.use(bodyParser.urlencoded({extended: true}))
+//app.use('/', express.static(path.join(__dirname + '../dist')));
 
-// app.use(passport.initialize());
-// app.use(passport.session());
-app.use(express.static('public'));
 app.use(express.static('dist'));
 app.use('/node_modules', express.static('node_modules'));
 
@@ -138,40 +138,20 @@ var fakeUserData = {
 //   console.log('compared: ', res);
 // });
 
-
-
 //routes
-app.get('/user', function (req, res) {
-  // GET request to get user info
-  // calling DB helper function with username to retrieve user data from DB and send it back to client
+app.post('/user', handler.addUser);
 
-  console.log(req.url);
-  res.send(fakeUserData);
-});
+// app.get('/allusers', handler.findAllUser);
 
-app.post('/register', function (req, res) {
+app.get('/user', handler.findUser);
 
-});
+app.post('/addreference',handler.addReference);
 
-app.post('/login', function(req, res) {
+app.get('/allreferences', handler.findAllReferences);
 
-});
+app.get('/reference', handler.findReference);
 
-app.post('/sendemail', function (req, res) {
-  // POST request to send reference invite email
-  // call email helper funtion with email address and email text to send email
-  console.log(req.url);
-  res.sendStatus(201);
-});
-
-app.post('/postreference', function (req, res) {
-  // POST request to write references for outher useers
-  // call DB helper function with reference text to store reference in DB under according user
-  // something like:
-  // DBhelper.createReference(fakeUserData.username, fakeUserData.references[0], callback? )
-  res.sendStatus(201);
-})
-
+app.post('/sendemail', handler.sendInvite);
 
 app.listen(3000, function () {
   console.log('Server listening on port 3000')
