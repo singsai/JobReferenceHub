@@ -1,11 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/reference');
 
-// Define our connection object.
-// var db = mongoose.connection();
-// db.once('open', function() {
-//   // connected
-// });
+
 
 ///////////////////////////// SCHEMA DEFINITIONS ////////////////////////////////
 var userSchema = mongoose.Schema({

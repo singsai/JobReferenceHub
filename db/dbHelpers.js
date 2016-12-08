@@ -1,4 +1,4 @@
-var db = require('/database-helpers.js');
+var db = require('. /dbConfig.js');
 var User = db.User;
 var Reference = db.Reference;
 
@@ -50,62 +50,62 @@ var Reference = db.Reference;
 */
 
 // We will store all of our methods on here, for easy export.
-var h = {};
-
-h.addUser = function(object, cb) {
-  var tempUser = new User(object);
-  
-  tempUser.save(function(err) {
-    if (err) {
-      console.log('There has been an error saving this User. Please see the addUser function in database-helpers.js. Error is:', err);
-    }
-    if (cb) {
-      cb(tempUser);
-    }
-  })
-};
-
-h.findAllUsers = function(cb) {
-  User.find(function(err, users) {
-    if (err) {
-      console.log('There has been an error finding all users. Please see the findAll function in database-helpers.js. Error is:', err);
-    }
-    cb(users);
-  });
-};
-
-h.findUser = function(object, cb) {
-  User.find(object, cb);
-};
-
-h.addReference = function(object, cb) {
-  var tempReference = new Reference(object);
-  
-  tempReference.save(function(err) {
-    if (err) {
-      console.log('Error. See addReference() in database-helpers.js. Error:', err);
-    }
-    if (cb) {
-      cb(tempReference);
-    }
-  });
-};
-
-h.findAllReferences = function(cb) {
-  Reference.find(function(err, refs) {
-    if (err) {
-      console.log('Error. See findAllReference() in database-helpers.js. Error:', err);
-    }
-    cb(refs);
-  });
-};
-
-h.findReference = function(object, cb) {
-  Reference.find(object, cb);
-};
-
-// Export
-module.exports = h;
+//var h = {};
+//
+//h.addUser = function(object, cb) {
+//  var tempUser = new User(object);
+//  
+//  tempUser.save(function(err) {
+//    if (err) {
+//      console.log('There has been an error saving this User. Please see the addUser function in database-helpers.js. Error is:', err);
+//    }
+//    if (cb) {
+//      cb(tempUser);
+//    }
+//  })
+//};
+//
+//h.findAllUsers = function(cb) {
+//  User.find(function(err, users) {
+//    if (err) {
+//      console.log('There has been an error finding all users. Please see the findAll function in database-helpers.js. Error is:', err);
+//    }
+//    cb(users);
+//  });
+//};
+//
+//h.findUser = function(object, cb) {
+//  User.find(object, cb);
+//};
+//
+//h.addReference = function(object, cb) {
+//  var tempReference = new Reference(object);
+//  
+//  tempReference.save(function(err) {
+//    if (err) {
+//      console.log('Error. See addReference() in database-helpers.js. Error:', err);
+//    }
+//    if (cb) {
+//      cb(tempReference);
+//    }
+//  });
+//};
+//
+//h.findAllReferences = function(cb) {
+//  Reference.find(function(err, refs) {
+//    if (err) {
+//      console.log('Error. See findAllReference() in database-helpers.js. Error:', err);
+//    }
+//    cb(refs);
+//  });
+//};
+//
+//h.findReference = function(object, cb) {
+//  Reference.find(object, cb);
+//};
+//
+//// Export
+//module.exports = h;
 
 
 
