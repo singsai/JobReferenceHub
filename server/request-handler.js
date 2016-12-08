@@ -8,7 +8,7 @@ var h = {};
 
 h.addUser = function(req, res) {
   var tempUser = new User(object);
-  
+
   tempUser.save(function(err) {
     if (err) {
       console.log('There has been an error saving this User. Please see the addUser function in request-handler.js. Error is:', err);
@@ -41,7 +41,7 @@ h.findUser = function(req, res) {
 
 h.addReference = function(req, res) {
   var tempReference = new Reference(object);
-  
+
   tempReference.save(function(err) {
     if (err) {
       console.log('Error. See addReference() in request-handler.js. Error:', err);
@@ -81,6 +81,3 @@ h.sendInvite = function (req, res) {
 
 // Export
 module.exports = h;
-
-
-
