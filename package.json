@@ -3,5 +3,10 @@
   "version": "0.1.0",
   "description": "",
   "main": "app.js",
-  "scripts": ""
+  "scripts": "",
+  "dependencies": {
+    "mongodb": "^2.2.12",
+    "mongoose": "^4.4.10",
+    "express": "^4.13.4"
+  }
 }
