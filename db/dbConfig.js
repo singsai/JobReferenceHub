@@ -1,17 +1,18 @@
 var mongoose = require('mongoose');
+// var passportLocalMongoose = require('passport-local-mongoose');
+var Schema = mongoose.Schema;
+
 mongoose.connect('mongodb://localhost/reference');
 
-
-
 ///////////////////////////// SCHEMA DEFINITIONS ////////////////////////////////
-var userSchema = mongoose.Schema({
+var userSchema = new Schema({
   id: Number,
   username: String,
   password: String,
   firstName: String,
   middleName: String,
   lastName: String,
-  
+
   // This can and should be expanded to include all needed data fields.
   profileInfo: {
     schools: Array,
@@ -19,14 +20,14 @@ var userSchema = mongoose.Schema({
     description: String,
     joinedAt: {type: Date, default: Date.now},
   },
-  
+
   // This stores the references. May need to be modified to make searching for specific
   // references constant time. Since no person will likely have a large number of refs,
-  // (from a CS perspective), this optimization may not be necessary. 
+  // (from a CS perspective), this optimization may not be necessary.
   references: Array
 });
 
-var refSchema = mongoose.Schema({
+var refSchema = new Schema({
   id: Number,
   author: String,
   authorDetails: {
@@ -37,7 +38,7 @@ var refSchema = mongoose.Schema({
     // Add properties as needed.
     // Here...
     // Here...
-    // Etc ... 
+    // Etc ...
   },
   reference: {
     header: String,
@@ -46,6 +47,10 @@ var refSchema = mongoose.Schema({
     ratings: Array
   }
 });
+
+// salting and hashing for passport
+// userSchema.plugin(passportLocalMongoose);
+// refSchema.plugin(passportLocalMongoose);
 
 //////////////////////////// CREATE MODELS ///////////////////////////////////
 
