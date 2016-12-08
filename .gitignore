@@ -3,7 +3,8 @@ bower_components/
 *.log
 
 build/
-dist/
+dist/*.js
+.DS_Store
 
 # Test Helpers
 db-test-server.js
