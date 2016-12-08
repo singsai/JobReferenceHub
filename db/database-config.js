@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var passportLocalMongoose = require('passport-local-mongoose');
+// var passportLocalMongoose = require('passport-local-mongoose');
 var Schema = mongoose.Schema;
 
 mongoose.connect('mongodb://localhost/reference');
@@ -54,9 +54,9 @@ var refSchema = new Schema({
   }
 });
 
-// salting and hashing
-userSchema.plugin(passportLocalMongoose);
-refSchema.plugin(passportLocalMongoose);
+// salting and hashing for passport
+// userSchema.plugin(passportLocalMongoose);
+// refSchema.plugin(passportLocalMongoose);
 
 //////////////////////////// CREATE MODELS ///////////////////////////////////
 
