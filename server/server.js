@@ -8,7 +8,6 @@ var handler = require('./request-handler.js');
 
 var app = express();
 
-app.use(express.static('public'));
 app.use(express.static('dist'));
 app.use('/node_modules', express.static('node_modules'));;
 
