@@ -23,8 +23,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
-  console.log('serializeUser called');
-  done(null, user._id);
+  console.log('serializeUser called', user);
+  done(null, user);
 });
 
 passport.deserializeUser(function(id, done) {
@@ -47,27 +47,30 @@ passport.use(new LocalStrategy(
     // console.log('login hit');
     // console.log('req', req);
     // console.log('done', done);
-    // console.log('username', username);
-    // console.log('password', password);
+    console.log('strat username', username);
+    console.log('strat password', password);
 
     User.findOne({ 'username' :  username },
       function(err, user) {
         console.log('err', err);
         console.log('user', user);
-        if (err)
+        if (err){
+          console.log('some error');
           return done(err);
+        }
         if (!user){
           console.log('User Not Found with username ' + username);
           return done(null, false, {message: 'Incorrect Password!'});
-
         }
-        auth.comparePass(password, user.password, function(err, isMatch) {
-          console.log('password', password);
-          console.log('user.password', user.password);
+        console.log('before hash compare');
+        auth.comparePass(password, user.password, function(isMatch) {
+          console.log('input password', password);
+          console.log('hash password', user.password);
           if (!isMatch){
             console.log('Invalid Password');
             return done(null, false, {message: 'Incorrect Password!'});
           } else {
+            console.log('AUTHORIZED');
             return done(null, user.username);
           }
         });
@@ -151,22 +154,25 @@ app.post('/user', handler.addUser);
 
 app.post('/signup', function(req, res) {
   console.log('signup', req.body);
-  // handler.addUser(req, res);
+  auth.addUser(User, req, res);
   // var username = req.body.username;
-  // res.send('received');
+  // res.send('user added!');
 });
 
 app.post('/login', passport.authenticate('local'), function(req, res) {
   // console.log('req.body', req.body);
   var username = req.body.username;
-  handler.addUser(req, res);
+  var password = req.body.password;
+  auth.findUser(User, req, res, function(user) {
+    console.log(user);
+  });
+
+  // NEED TO BE ABLE TO FIND USER
+  // THEN COMPARE WITH DB PASSWORD WITH INPUT PASSWORD + HASH
+
 
   // console.log('signup', req.body);
   // res.send('received');
-});
-
-app.post('/login', function(req, res) {
-  handler.findUser(req, res);
 });
 
 app.get('/user', handler.findUser);
