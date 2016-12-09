@@ -8,7 +8,8 @@ mongoose.connect('mongodb://localhost/reference');
 var userSchema = new Schema({
   id: Number,
   username: String,
-  password: String
+  password: String,
+  hash: String
   // firstName: String,
   // middleName: String,
   // lastName: String,
