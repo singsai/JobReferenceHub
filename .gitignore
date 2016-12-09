@@ -7,4 +7,6 @@ dist/*.js
 .DS_Store
 
 # Test Helpers
+
 db-test-server.js
+db/data/
