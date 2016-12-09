@@ -23,13 +23,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
+  console.log('serializeUser called');
   done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {
-  // User.findById(id, function(err, user) {
+  console.log('deserializeUser called');
+  User.findById(id, function(err, user) {
     done(err, user);
-  // });
+  });
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -147,13 +149,16 @@ app.post('/user', handler.addUser);
 
 // app.get('/allusers', handler.findAllUser);
 
-app.post('/signup', passport.authenticate('local'), function(req, res) {
+app.post('/signup', function(req, res) {
   console.log('signup', req.body);
-  res.send('received');
+  // handler.addUser(req, res);
+  // var username = req.body.username;
+  // res.send('received');
 });
 
 app.post('/login', passport.authenticate('local'), function(req, res) {
-  console.log('req.body', req.body);
+  // console.log('req.body', req.body);
+  var username = req.body.username;
   res.send("received");
 });
 
