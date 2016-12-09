@@ -7,7 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      referenceText: '',
+      referenceText: '', 
       referenceList: ''
     };
 
@@ -30,18 +30,18 @@ class App extends React.Component {
       <div className="App">
         <div className="App-header">
           <img src="" className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2 className="appTitle">Welcome to React</h2>
         </div>
-        <div>
-          <form onSubmit={this.handleSubmit}>
+        <div className="formContainer">
+          <form className="form" onSubmit={this.handleSubmit}>
             <label>
-              <h3>Write your reference:</h3>
-              <input type="textarea" value={this.state.referenceText} onChange={this.handleChange} />
+              <h3 className="formInstructions">Write your reference:</h3>
+              <input className="appInput" type="textarea" value={this.state.referenceText} onChange={this.handleChange} />
             </label> <br />
-            <input type="submit" value="Submit" />
+            <input className="btn formBtn" type="submit" value="Submit" />
           </form>          
         </div>
-        <div>
+        <div className="referenceContainer">
           <References references={this.props.references}/>
         </div>
       </div>         

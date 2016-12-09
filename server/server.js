@@ -159,7 +159,14 @@ app.post('/signup', function(req, res) {
 app.post('/login', passport.authenticate('local'), function(req, res) {
   // console.log('req.body', req.body);
   var username = req.body.username;
-  res.send("received");
+  handler.addUser(req, res);
+
+  // console.log('signup', req.body);
+  // res.send('received');
+});
+
+app.post('/login', function(req, res) {
+  handler.findUser(req, res);
 });
 
 app.get('/user', handler.findUser);
