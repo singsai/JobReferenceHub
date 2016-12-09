@@ -5,16 +5,18 @@ body {
 .App {
 	width: 70%;
 	margin: auto;
+	display: block;
 }
 
 .App-header {
+
 }
 
 .App-logo {
+
 }
 
 .appTitle {
-
 }
 
 .formContainer {

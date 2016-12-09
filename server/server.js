@@ -147,14 +147,15 @@ app.post('/user', handler.addUser);
 
 // app.get('/allusers', handler.findAllUser);
 
-app.post('/signup', passport.authenticate('local'), function(req, res) {
-  console.log('signup', req.body);
-  res.send('received');
+app.post('/signup', function(req, res) {
+  handler.addUser(req, res);
+
+  // console.log('signup', req.body);
+  // res.send('received');
 });
 
-app.post('/login', passport.authenticate('local'), function(req, res) {
-  console.log('req.body', req.body);
-  res.send("received");
+app.post('/login', function(req, res) {
+  handler.findUser(req, res);
 });
 
 app.get('/user', handler.findUser);
