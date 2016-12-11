@@ -12,6 +12,8 @@ var expressSession = require('express-session');
 var bcrypt = require('bcrypt');
 var salt = bcrypt.genSaltSync(10);
 var auth = require('./hash.js');
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(expressSession({
   secret: 'ambitious-elm',
@@ -146,6 +148,9 @@ app.post('/user', handler.addUser);
 app.get('/user', handler.findUser);
 
 app.post('/addreference',handler.addReference);
+// app.post('/addreference', function(req, res) {
+//   console.log(req.body);
+// });
 
 app.get('/allreferences', handler.findAllReferences);
 
