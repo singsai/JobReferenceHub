@@ -23,13 +23,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
-  done(null, user._id);
+  console.log('serializeUser called', user);
+  done(null, user);
 });
 
 passport.deserializeUser(function(id, done) {
-  // User.findById(id, function(err, user) {
+  console.log('deserializeUser called');
+  User.findById(id, function(err, user) {
     done(err, user);
-  // });
+  });
 });
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -45,27 +47,30 @@ passport.use(new LocalStrategy(
     // console.log('login hit');
     // console.log('req', req);
     // console.log('done', done);
-    // console.log('username', username);
-    // console.log('password', password);
+    console.log('strat username', username);
+    console.log('strat password', password);
 
     User.findOne({ 'username' :  username },
       function(err, user) {
         console.log('err', err);
         console.log('user', user);
-        if (err)
+        if (err){
+          console.log('some error');
           return done(err);
+        }
         if (!user){
           console.log('User Not Found with username ' + username);
           return done(null, false, {message: 'Incorrect Password!'});
-
         }
-        auth.comparePass(password, user.password, function(err, isMatch) {
-          console.log('password', password);
-          console.log('user.password', user.password);
+        console.log('before hash compare');
+        auth.comparePass(password, user.password, function(isMatch) {
+          console.log('input password', password);
+          console.log('hash password', user.password);
           if (!isMatch){
             console.log('Invalid Password');
             return done(null, false, {message: 'Incorrect Password!'});
           } else {
+            console.log('AUTHORIZED');
             return done(null, user.username);
           }
         });
@@ -147,14 +152,27 @@ app.post('/user', handler.addUser);
 
 // app.get('/allusers', handler.findAllUser);
 
-app.post('/signup', passport.authenticate('local'), function(req, res) {
+app.post('/signup', function(req, res) {
   console.log('signup', req.body);
-  res.send('received');
+  auth.addUser(User, req, res);
+  // var username = req.body.username;
+  // res.send('user added!');
 });
 
 app.post('/login', passport.authenticate('local'), function(req, res) {
-  console.log('req.body', req.body);
-  res.send("received");
+  // console.log('req.body', req.body);
+  var username = req.body.username;
+  var password = req.body.password;
+  auth.findUser(User, req, res, function(user) {
+    console.log(user);
+  });
+
+  // NEED TO BE ABLE TO FIND USER
+  // THEN COMPARE WITH DB PASSWORD WITH INPUT PASSWORD + HASH
+
+
+  // console.log('signup', req.body);
+  // res.send('received');
 });
 
 app.get('/user', handler.findUser);
