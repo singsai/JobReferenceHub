@@ -4,10 +4,8 @@ var Reference = db.Reference;
 var express = require('express');
 var bodyParser = require('body-parser');
 
-var h = {};
-
-h.addUser = function(req, res) {
-  var tempUser = new User(object);
+module.exports.addUser = function(req, res) {
+  var tempUser = new User({username: req.body.username, password: req.body.password});
 
   tempUser.save(function(err) {
     if (err) {
@@ -18,7 +16,7 @@ h.addUser = function(req, res) {
   })
 };
 
-h.findAllUsers = function(req, res) {
+module.exports.findAllUsers = function(req, res) {
   User.find(function(err, users) {
     if (err) {
       console.log('There has been an error finding all users. Please see the findAllUsers function in request-handler.js. Error is:', err);
@@ -28,9 +26,9 @@ h.findAllUsers = function(req, res) {
   });
 };
 
-h.findUser = function(req, res) {
-  var FakeObjectFromReq = {username: 'Fred'};
-  User.find(FakeObjectFromReq, function(err, user) {
+module.exports.findUser = function(req, res) {
+  var object = {username: req.body.username, password: req.body.password};
+  User.find(object, function(err, user) {
     if (err) {
       console.log('There has been an error finding the user. Please see the findUser function in request-handler.js. Error is:', err);
       res.sendStatus(400);
@@ -39,10 +37,9 @@ h.findUser = function(req, res) {
   });
 };
 
-h.addReference = function(req, res) {
+module.exports.addReference = function(req, res) {
   console.log(req.body);
   var tempReference = new Reference(req.body);
-
   tempReference.save(function(err) {
     if (err) {
       console.log('Error. See addReference() in request-handler.js. Error:', err);
@@ -52,7 +49,7 @@ h.addReference = function(req, res) {
   });
 };
 
-h.findAllReferences = function(req, res) {
+module.exports.findAllReferences = function(req, res) {
   Reference.find(function(err, refs) {
     if (err) {
       console.log('Error. See findAllReferences() in request-handler.js. Error:', err);
@@ -62,7 +59,7 @@ h.findAllReferences = function(req, res) {
   });
 };
 
-h.findReference = function(req, res) {
+module.exports.findReference = function(req, res) {
   var FakeObjectFromReq = {author: 'Fred'};
   Reference.find(FakeObjectFromReq, function(err, ref) {
     if (err) {
@@ -73,12 +70,9 @@ h.findReference = function(req, res) {
   });
 };
 
-h.sendInvite = function (req, res) {
+module.exports.sendInvite = function (req, res) {
   // POST request to send reference invite email
   // call email helper funtion with email address and email text to send email
   console.log(req.url);
   res.sendStatus(201);
 };
-
-// Export
-module.exports = h;

@@ -89,23 +89,34 @@ class App extends React.Component {
       <div className="App">
         <div className="App-header">
           <img src="" className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2 className="appTitle">Welcome to React</h2>
         </div>
+        <div className="formContainer">
+          <form className="form" onSubmit={this.handleSubmit}>
+            <label>
+              <h3 className="formInstructions">Write your reference:</h3>
+              <input className="appInput" type="textarea" value={this.state.referenceText} onChange={this.handleChange} />
         <div>
           <form onSubmit={this.handleReferenceSubmit}>
             <label>
               <h3>Write your reference:</h3>
               <input type="textarea" value={this.state.referenceText} onChange={this.handleReferenceChange} />
             </label> <br />
-            <input type="submit" value="Submit" />
+            <input className="btn formBtn" type="submit" value="Submit" />
           </form>          
         </div>
+<<<<<<< HEAD
+=======
+        <div className="referenceContainer">
+          <References references={this.props.references}/>
+>>>>>>> mergeKai
         <div>
           <References references={this.state.referenceList}/>
         </div>
       </div>         
     );
   }
+<<<<<<< HEAD
 }
 /*
         <div>
@@ -113,3 +124,6 @@ class App extends React.Component {
         </div>
 */
 //export default App;
+=======
+}
+>>>>>>> mergeKai

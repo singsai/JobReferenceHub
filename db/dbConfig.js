@@ -9,38 +9,33 @@ var userSchema = new Schema({
   id: Number,
   username: String,
   password: String,
-  firstName: String,
-  middleName: String,
-  lastName: String,
-
-  // This can and should be expanded to include all needed data fields.
+  hash: String,
+  // firstName: String,
+  // middleName: String,
+  // lastName: String,
+  //
+  // // This can and should be expanded to include all needed data fields.
   profileInfo: {
-    schools: Array,
-    pastEmployers: Array,
-    description: String,
+    // schools: Array,
+    // companies: Array,
+    currentCompany: String,
+    role: String,
+    // pastEmployers: Array,
+    // description: String,
     joinedAt: {type: Date, default: Date.now},
   },
-
-  // This stores the references. May need to be modified to make searching for specific
-  // references constant time. Since no person will likely have a large number of refs,
-  // (from a CS perspective), this optimization may not be necessary.
-  references: Array
+  //
+  // // This stores the references. May need to be modified to make searching for specific
+  // // references constant time. Since no person will likely have a large number of refs,
+  // // (from a CS perspective), this optimization may not be necessary.
+  // references: Array
 });
 
 var refSchema = new Schema({
   id: Number,
-  author: String,
-  authorDetails: {
-    // Most recent is current company. If no current company -- pass null. ([null, Google, Apple, etc...])
-    companies: Array,
-    // 1-to-1 mapping with companies.
-    roles: Array
-    // Add properties as needed.
-    // Here...
-    // Here...
-    // Etc ...
-  },
   reference: {
+    authorId: Number, //Author
+    applicantId: Number, //The person this reference is about
     header: String,
     body: String,
     // May not be used, but potentially worth having.
