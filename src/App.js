@@ -7,23 +7,82 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      referenceText: '', 
-      referenceList: ''
+      referenceText: '',
+      referenceList: []
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReferenceChange = this.handleReferenceChange.bind(this);
+    this.handleReferenceSubmit = this.handleReferenceSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleReferenceChange(event) {
     this.setState({referenceText: event.target.value});
     console.log(this.state.referenceText);
   }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.referenceText);
+  handleReferenceSubmit(event) {
+    var data = {
+      author: 'Bob',
+      reference: {
+        header: "Hi",
+        body: this.state.referenceText
+      }
+    }
+
+    $.ajax({
+      type: 'POST',
+      url: '/addreference',
+      data: data
+    })
+    .done(function(data) {
+      console.log('Submitted...', data);      
+    })
+    .fail(function(jqXhr) {
+      console.log('failed to register');
+    });    
+    // axios.post('/addreference', data:{
+    //   firstName: 'Fred',
+    //   lastName: 'Flintstone'
+    // })
+    // .then(function (response) {
+    //   console.log(response);
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });    
+    console.log('A name was submitted: ' + this.state.referenceText);
     event.preventDefault();
   }
+  componentDidMount() {    
+    console.log('Is this working or not?');
+    $.ajax({
+      url: '/allreferences',
+      type: 'GET',    
+      contentType: 'application/json',
+      success: (data) => {       
+        //console.log(data); 
+        let tempRefs = [];
+        for (var k in data) {
+          //console.log(data[k].reference.body);
+          this.setState({referenceList: data[k].reference.body})
+        }
+        console.log(this.state.referenceList);
+        //return callback(data.items);
+      },
+      failure: () => { console.log('UNLIKELY'); }
+    });    
+    // this.props.searchYouTube({
+    //   key: window.YOUTUBE_API_KEY, 
+    //   query: 'japan kobe steak', 
+    //   max: 5 
+    // }, (videos) => { 
+    //   console.log(videos);
+    //   this.setState({
+    //     current: videos[0],
+    //     list: videos
+    //   });
+    };
+//    console.log('current state:', this.state.current);
 
   render() {
     return (
@@ -37,16 +96,18 @@ class App extends React.Component {
             <label>
               <h3 className="formInstructions">Write your reference:</h3>
               <input className="appInput" type="textarea" value={this.state.referenceText} onChange={this.handleChange} />
+        <div>
+          <form onSubmit={this.handleReferenceSubmit}>
+            <label>
+              <h3>Write your reference:</h3>
+              <input type="textarea" value={this.state.referenceText} onChange={this.handleReferenceChange} />
             </label> <br />
             <input className="btn formBtn" type="submit" value="Submit" />
           </form>          
         </div>
         <div className="referenceContainer">
           <References references={this.props.references}/>
-        </div>
       </div>         
     );
   }
 }
-
-//export default App;

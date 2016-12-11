@@ -2,7 +2,7 @@ var db = require('../db/dbConfig.js');
 var User = db.User;
 var Reference = db.Reference;
 var express = require('express');
-
+var bodyParser = require('body-parser');
 
 
 module.exports.addUser = function(req, res) {
@@ -39,8 +39,8 @@ module.exports.findUser = function(req, res) {
 };
 
 module.exports.addReference = function(req, res) {
-  var tempReference = new Reference(object);
-
+  console.log(req.body);
+  var tempReference = new Reference(req.body);
   tempReference.save(function(err) {
     if (err) {
       console.log('Error. See addReference() in request-handler.js. Error:', err);
