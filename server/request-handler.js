@@ -4,7 +4,6 @@ var Reference = db.Reference;
 var express = require('express');
 var bodyParser = require('body-parser');
 
-
 module.exports.addUser = function(req, res) {
   var tempUser = new User({username: req.body.username, password: req.body.password});
 
