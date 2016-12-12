@@ -3,8 +3,6 @@ var User = db.User;
 var Reference = db.Reference;
 var express = require('express');
 var bodyParser = require('body-parser');
-var api_key = require('./keys.js').mailgun;
-var mailgun = require('mailgun-js')({apiKey: api_key});
 
 
 // Adds a user to the database. This is not currently being used.
@@ -78,24 +76,6 @@ module.exports.findReference = function(req, res) {
       res.sendStatus(400);
     }
     res.send(ref);
-  });
-};
-
-module.exports.sendInvite = function (req, res) {
-  // POST request to send reference invite email
-  // call email helper funtion with email address and email text to send email
-  //module to send email via mailgun documentation at https://www.npmjs.com/package/mailgun-js
- 
-  var data = {
-    from: 'Excited User <me@samples.mailgun.org>',
-    to: 'Testing-mailgun@red0.red',
-    subject: 'Hello',
-    text: 'Testing some Mailgun awesomness!'
-  };
-  mailgun.messages().send(data, function (error, body) {
-    console.log(body);
-    console.log(req.url);
-    res.sendStatus(201);
   });
 };
 
