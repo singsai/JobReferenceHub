@@ -5,9 +5,6 @@ body {
 	padding:0px;
 }
 
-p {
-}
-
 .App {
 	
 }
@@ -29,11 +26,6 @@ p {
 	padding: 5px;
 	padding-left: 15%;
 	max-height: inherit;
-}
-
-img {
-	max-width: 80px;
-	max-height: 80px;
 }
 
 .appTitle {
@@ -95,10 +87,53 @@ img {
 
 }
 
-.formBtn {
+.referenceRepeat {
+  
+}
 
+.referenceHeadline {
+
+}
+
+.referenceBody {
+
+}
+
+.profName {
+  display: inline-block;
+}
+
+.profUsername {
+  display: inline-block;
+}
+
+.profCompany {
+  display: inline-block;
+}
+
+.profImg {
+  max-width: 200px;
+  max-height: 200px;
+  display: inline-block;
+
+}
+
+.profJob {
+  display: inline-block;
 }
 
 .referenceContainer {
-
+	display: block;
+  margin: auto;
+  width: 100%;
 }
+
+.profContainer {
+  display: block;
+  margin: auto;
+  width: 70%;
+}
+
+
+
+

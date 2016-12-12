@@ -1,23 +1,27 @@
-var mockData = {
-  username: 'bob',
-  firstName: 'NotBob',
-  lastName: 'Loblaw',
+// Profile state needs an initial value for "currentUser", which is briefly displayed
+// while the real user's data is being fetched. 
+var defaultData = {
+  username: 'loading...',
+  firstName: 'loading...',
+  lastName: '',
   profileInfo: {
-    currentCompany: 'Boogle',
-    role: 'Janitor',
-    img: 'http://pngimg.com/upload/duck_PNG5011.png'
+    currentCompany: 'loading...',
+    role: 'loading...',
+    img: 'http://striblab.github.io/startribune_dataviz/20151117-police_deaths/img/loading.gif'
   }
 }
 
+// A Profile component which models our profile page.
 class Profile extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-      currentUser: mockData,
-      references: null
+      currentUser: defaultData,
+      references: []
     };
-    // this.createUser();
+    // This will need to be changed so that you can search and input.
     this.getUserData('bob');
+    this.getUserRefs('bob');
   }
 
   getUserData(username) {
@@ -28,19 +32,45 @@ class Profile extends React.Component {
     }.bind(this));
   }
 
-  createUser() {
-    fetch('/user', {method: 'POST', body: {test: 'test'}}).then(function(response) {
-      console.log
-    })
+  getUserRefs(username) {
+    $.post('/reference', {referencedUsername: username})
+    .then(function(data) {
+      this.setState({
+        references: data
+      });
+      console.log('References:', data);
+    }.bind(this));
+
   }
+
   render() {
+
+    console.log('State is:', this.state);
+
+    var listItems = this.state.references.map(function(item) {
+      return (
+        <div className='referenceRepeat'>
+          <h2 className='referenceHeadline'>{item.header}</h2>
+          <h4 className='referenceBody'>{item.body}</h4>
+        </div>
+      )
+    });
+
+
+
+
     return (
-      <div>
-        Name: {this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName} <br/>
-        Username: {this.state.currentUser.username} <br/>
-        <img src={this.state.currentUser.profileInfo.img}/> <br/>
-        Current Company: {this.state.currentUser.profileInfo.currentCompany} <br/>
-        Job: {this.state.currentUser.profileInfo.role} <br/>
+      <div className='profContainer'>
+        <p><img className='profImg' src={this.state.currentUser.profileInfo.img}/></p> <br/>
+        <p className='profName'>Name: {this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
+        <p className='profUsername'>Username: {this.state.currentUser.username}</p> <br/>
+        <p className='profCompany'>Current Company: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
+        <p className='profJob'>Job: {this.state.currentUser.profileInfo.role}</p> <br/>
+
+        <hr/>
+        <div className='referenceContainer'>
+          {listItems}
+        </div>
       </div>
       
     )
