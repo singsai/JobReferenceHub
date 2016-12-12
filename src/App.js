@@ -7,11 +7,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      authorName: '',
+      authorUrl: '',
+      referenceFor: '',
       referenceText: '',
-      referenceList: []
     };
 
     this.handleReferenceChange = this.handleReferenceChange.bind(this);
+    this.handleReferenceForChange = this.handleReferenceForChange.bind(this);    
+    this.handleAuthorNameChange = this.handleAuthorNameChange.bind(this);
+    this.handleAuthorUrlChange = this.handleAuthorUrlChange.bind(this);
     this.handleReferenceSubmit = this.handleReferenceSubmit.bind(this);
   }
 
@@ -19,12 +24,26 @@ class App extends React.Component {
     this.setState({referenceText: event.target.value});
     console.log(this.state.referenceText);
   }
+  handleAuthorNameChange(event) {
+    this.setState({authorName: event.target.value});
+    console.log(this.state.authorName);
+  }
+  handleAuthorUrlChange(event) {
+    this.setState({authorUrl: event.target.value});
+    console.log(this.state.authorUrl);
+  }
+  handleReferenceForChange(event) {
+    this.setState({referenceFor: event.target.value});
+    console.log(this.state.referenceFor);
+  }
 
   handleReferenceSubmit(event) {
+    event.preventDefault();
     var data = {
-      author: 'Bob',
+      author: this.state.authorName,
       reference: {
-        header: "Hi",
+        referenceFor: this.state.referenceFor,
+        authorUrl: this.state.authorUrl,
         body: this.state.referenceText
       }
     }
@@ -50,8 +69,7 @@ class App extends React.Component {
     // .catch(function (error) {
     //   console.log(error);
     // });    
-    console.log('A name was submitted: ' + this.state.referenceText);
-    event.preventDefault();
+    console.log('A name was submitted: ' + this.state.referenceText);    
   }
   componentDidMount() {    
     console.log('Is this working or not?');
@@ -87,21 +105,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src="imgs/logo.png" className="App-logo" alt="logo" />
-        </div>
-        <div className='formContainer'>
-          <form onSubmit={this.handleReferenceSubmit}>
-            <label>
-              <h3>Write your reference:</h3>
-              <input className='appInput' type="textarea" value={this.state.referenceText} onChange={this.handleReferenceChange} />
-            </label> <br />
-            <div className="btn formBtn" type="submit" value="Submit">Submit</div>
-          </form>          
-        </div>
-        <div className="referenceContainer">
-          <References references={this.props.references} />
-        </div>
+          <Form 
+            authorHandler={this.handleAuthorNameChange} 
+            authorUrlHandler={this.handleAuthorUrlChange} 
+            referenceHandler={this.handleReferenceChange} 
+            referenceForHandler={this.handleReferenceForChange} 
+            handleReferenceSubmit={this.handleReferenceSubmit}/>
       </div>         
     );
   }
