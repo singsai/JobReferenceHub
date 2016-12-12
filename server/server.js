@@ -35,8 +35,6 @@ app.post('/addreference',handler.addReference);
 
 app.post('/reference', handler.findReference);
 
-app.post('/sendemail', handler.sendInvite);
-
 app.post('/user', handler.addUser);
 
 
