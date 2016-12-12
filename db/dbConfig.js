@@ -6,13 +6,12 @@ mongoose.connect('mongodb://localhost/reference');
 
 ///////////////////////////// SCHEMA DEFINITIONS ////////////////////////////////
 var userSchema = new Schema({
-  id: Number,
   username: String,
   password: String,
   hash: String,
-  // firstName: String,
+  firstName: String,
   // middleName: String,
-  // lastName: String,
+  lastName: String,
   //
   // // This can and should be expanded to include all needed data fields.
   profileInfo: {
@@ -22,7 +21,8 @@ var userSchema = new Schema({
     role: String,
     // pastEmployers: Array,
     // description: String,
-    joinedAt: {type: Date, default: Date.now}
+    joinedAt: {type: Date, default: Date.now},
+    img: String
   }
   //
   // // This stores the references. May need to be modified to make searching for specific
