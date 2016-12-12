@@ -4,7 +4,6 @@ var Reference = db.Reference;
 var express = require('express');
 var bodyParser = require('body-parser');
 
-
 // Adds a user to the database. This is not currently being used.
 module.exports.addUser = function(req, res) {
   var tempUser = new User(req.body);
@@ -78,6 +77,7 @@ module.exports.findReference = function(req, res) {
     res.send(ref);
   });
 };
+
 
 // Used to destroy the User database. Debugging functionality only.
 module.exports.destroy = function(req, res) {
