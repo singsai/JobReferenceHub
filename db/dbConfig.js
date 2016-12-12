@@ -1,10 +1,15 @@
+// ---------------------------- REQUIRE FILES ---------------------------- //
+
 var mongoose = require('mongoose');
-// var passportLocalMongoose = require('passport-local-mongoose');
 var Schema = mongoose.Schema;
+
+
+// ---------------------------- CONNECT TO MONGOOSE ---------------------------- //
 
 mongoose.connect('mongodb://localhost/reference');
 
-///////////////////////////// SCHEMA DEFINITIONS ////////////////////////////////
+// ---------------------------- DEFINE SCHEMAS ---------------------------- //
+
 var userSchema = new Schema({
   username: String,
   password: String,
@@ -24,36 +29,26 @@ var userSchema = new Schema({
     joinedAt: {type: Date, default: Date.now},
     img: String
   }
-  //
-  // // This stores the references. May need to be modified to make searching for specific
-  // // references constant time. Since no person will likely have a large number of refs,
-  // // (from a CS perspective), this optimization may not be necessary.
-  // references: Array
 });
 
 var refSchema = new Schema({
-  id: Number,
-  reference: {
-    authorName: String, //should be changed to AuthorId: Number when refactored
-    authorUrl: String, // Stop thinking about the future
-    referenceFor: String, //The person this reference is about — should really be referenceFor:Number
-    header: String,
-    body: String,
-    // May not be used, but potentially worth having.
-    ratings: Array
-  }
+  
+  authorUsername: String,
+  referencedUsername: String, 
+  header: String,
+  body: String
+  
 });
 
-// salting and hashing for passport
-// userSchema.plugin(passportLocalMongoose);
-// refSchema.plugin(passportLocalMongoose);
 
-//////////////////////////// CREATE MODELS ///////////////////////////////////
+// ---------------------------- CREATE MODELS ---------------------------- //
 
 var User = mongoose.model('User', userSchema);
 var Reference = mongoose.model('Reference', refSchema);
 
-// We'll store our models here.
+
+// ---------------------------- STORE AND EXPORT MODELS ---------------------------- //
+
 var models = {};
 models.User = User;
 models.Reference = Reference;

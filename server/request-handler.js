@@ -7,10 +7,9 @@ var api_key = require('./keys.js').mailgun;
 var mailgun = require('mailgun-js')({apiKey: api_key});
 
 
+// Adds a user to the database. This is not currently being used.
 module.exports.addUser = function(req, res) {
   var tempUser = new User(req.body);
-
-  console.log('Req.body is :', req.body);
 
   tempUser.save(function(err) {
     if (err) {
@@ -21,6 +20,8 @@ module.exports.addUser = function(req, res) {
   })
 };
 
+// Returns an array of all users. Currently hooked up to the '/user' route. The
+// only usefulness it currently has is for debugging purposes. 
 module.exports.findAllUsers = function(req, res) {
   User.find(function(err, users) {
     if (err) {
@@ -31,6 +32,7 @@ module.exports.findAllUsers = function(req, res) {
   });
 };
 
+// Finds a specific user. Used in the '/user/:username' API route. Profile.js utilizes this. 
 module.exports.findUser = function(req, res) { 
   console.log('Params are:', req.params);
   var object = {username: req.params.username};
@@ -43,6 +45,7 @@ module.exports.findUser = function(req, res) {
   });
 };
 
+// Hooked up through '/addreference'.
 module.exports.addReference = function(req, res) {
   console.log(req.body);
   var tempReference = new Reference(req.body);
@@ -55,6 +58,7 @@ module.exports.addReference = function(req, res) {
   });
 };
 
+// Hooked up through '/allreferences'. Currently is only useful for debugging purposes.
 module.exports.findAllReferences = function(req, res) {
   Reference.find(function(err, refs) {
     if (err) {
@@ -65,9 +69,10 @@ module.exports.findAllReferences = function(req, res) {
   });
 };
 
+// Finds by username. Used in Profile.js and hooked up through '/reference'.
 module.exports.findReference = function(req, res) {
-  var FakeObjectFromReq = {author: 'Fred'};
-  Reference.find(FakeObjectFromReq, function(err, ref) {
+  var filter = {username: req.body.username};
+  Reference.find(filter, function(err, ref) {
     if (err) {
       console.log('Error. See findReference() in request-handler.js. Error:', err);
       res.sendStatus(400);
@@ -94,8 +99,12 @@ module.exports.sendInvite = function (req, res) {
   });
 };
 
+// Used to destroy the User database. Debugging functionality only.
 module.exports.destroy = function(req, res) {
-  User.remove({}, function() {
-    res.send(200);
-  });
+  Reference.remove({}, function() {
+    User.remove({}, function() {
+      res.send(200);
+    });
+  })
 }
+
