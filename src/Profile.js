@@ -40,7 +40,12 @@ class Profile extends React.Component {
       });
       console.log('References:', data);
     }.bind(this));
+  }
 
+  changeUser() {
+    var userVal = document.getElementById('userSearch').value;
+    this.getUserData(userVal);
+    this.getUserRefs(userVal);
   }
 
   render() {
@@ -50,7 +55,7 @@ class Profile extends React.Component {
     var listItems = this.state.references.map(function(item) {
       return (
         <div className='referenceRepeat'>
-          <h2 className='referenceHeadline'>{item.header}</h2>
+          <h2 className='referenceHeadline'>{item.authorUsername} says:</h2>
           <h4 className='referenceBody'>{item.body}</h4>
         </div>
       )
@@ -60,13 +65,16 @@ class Profile extends React.Component {
 
 
     return (
-      <div className='profContainer row'>
-        <div className="col-lg-12">
-          <p><img className='profImg' src={this.state.currentUser.profileInfo.img}/></p> <br/>
-          <p className='profName'>{this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
-          <p className='profUsername'>@{this.state.currentUser.username}</p> <br/>
-          <p className='profCompany'>Employer: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
-          <p className='profJob'>Position: {this.state.currentUser.profileInfo.role}</p> <br/>
+
+      <div className='profContainer'>
+        <input id='userSearch' />
+        <button className='searchProfileBtn' onClick={this.changeUser.bind(this)}>Search</button>
+        <hr/>
+        <p><img className='profImg' src={this.state.currentUser.profileInfo.img}/></p> <br/>
+        <p className='profName'>{this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
+        <p className='profUsername'>@{this.state.currentUser.username}</p> <br/>
+        <p className='profCompany'>Employer: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
+        <p className='profJob'>Position: {this.state.currentUser.profileInfo.role}</p> <br/>
 
           <hr/>
         </div>

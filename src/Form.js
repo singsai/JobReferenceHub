@@ -1,19 +1,18 @@
 var Form = (props) => (
-    <form onSubmit={props.handleReferenceSubmit} className='col-lg-12'>
-      <div className='form-group'>
-        <label>Author Name</label>
-        <input type="text" name="authorName" className='form-control' onChange={props.authorHandler}/>
-      </div>
-      <div className='form-group'>
-        <label>URL</label>
-        <input type="text" name="authorUrl" className='form-control' onChange={props.authorUrlHandler}/>
-      </div>
-      <div className='form-group'>
-          <label>You are writing for: </label>
-          <input type="text" name="referenceFor" className='form-control' onChange={props.referenceForHandler}/><br />
-          <label>Write something good...</label>
-          <input type="text" className='form-control' onChange={props.referenceHandler} />
-        <input className="btn formBtn btn btn-primary" type="submit" value="Submit" />
-      </div>
-    </form>
+
+  <div>
+    <form className='formContainer' onSubmit={props.handleReferenceSubmit}>
+      <label className='authorNameLbl'>Author Name:</label>
+      <input className='authorNameForm' type="text" name="authorName" onChange={props.authorHandler}/>
+      <br/>
+      <label className='authorUrlLbl'>URL:</label>
+      <input className='authorUrlForm' type="text" name="authorUrl" onChange={props.authorUrlHandler}/>
+        <p className='referencedUserLbl'>A reference for:</p>
+        <input className='referencedUsernameForm' type="text" name="referenceFor" onChange={props.referenceForHandler}/><br />
+        <p className='referenceBodyLbl'>Write your reference here:</p>
+        <textarea className='referenceBodyForm' onChange={props.referenceHandler} /> 
+      <input className="btn formBtn" type="submit" value="Submit" />
+    </form>          
+  </div>
 );
+

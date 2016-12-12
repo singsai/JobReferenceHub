@@ -68,7 +68,7 @@ module.exports.findAllReferences = function(req, res) {
 
 // Finds by username. Used in Profile.js and hooked up through '/reference'.
 module.exports.findReference = function(req, res) {
-  var filter = {username: req.body.username};
+  var filter = {referencedUsername: req.body.referencedUsername};
   Reference.find(filter, function(err, ref) {
     if (err) {
       console.log('Error. See findReference() in request-handler.js. Error:', err);
