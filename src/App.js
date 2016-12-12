@@ -59,6 +59,7 @@ class App extends React.Component {
     })
     .done(function(data) {
       console.log('Submitted...', data);
+      window.location.href = '/';
     })
     .fail(function(jqXhr) {
       console.log('failed to register');
