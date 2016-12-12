@@ -11,6 +11,7 @@ class App extends React.Component {
       authorUrl: '',
       referenceFor: '',
       referenceText: '',
+      showProfile: true
     };
 
     this.handleReferenceChange = this.handleReferenceChange.bind(this);
@@ -18,6 +19,7 @@ class App extends React.Component {
     this.handleAuthorNameChange = this.handleAuthorNameChange.bind(this);
     this.handleAuthorUrlChange = this.handleAuthorUrlChange.bind(this);
     this.handleReferenceSubmit = this.handleReferenceSubmit.bind(this);
+    this.handleAddReferenceClick = this.handleAddReferenceClick.bind(this);
   }
 
   handleReferenceChange(event) {
@@ -25,6 +27,7 @@ class App extends React.Component {
     this.setState({referenceText: event.target.value});
 
   }
+
   handleAuthorNameChange(event) {
     this.setState({authorName: event.target.value});
     console.log(this.state.authorName);
@@ -72,6 +75,11 @@ class App extends React.Component {
     // });
     console.log('A name was submitted: ' + this.state.referenceText);
   }
+
+  handleAddReferenceClick(event) {
+    this.setState({showProfile: !this.state.showProfile});
+  }
+
   componentDidMount() {
     console.log('Is this working or not?');
     $.ajax({
@@ -95,12 +103,15 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-          <Form
+      <div>
+        <a href='#' onClick={this.handleAddReferenceClick}>Add Reference </a>
+      </div>
+      { this.state.showProfile ? <Profile /> : (<Form
             authorHandler={this.handleAuthorNameChange}
             authorUrlHandler={this.handleAuthorUrlChange}
             referenceHandler={this.handleReferenceChange}
             referenceForHandler={this.handleReferenceForChange}
-            handleReferenceSubmit={this.handleReferenceSubmit}/>
+            handleReferenceSubmit={this.handleReferenceSubmit} />) }
       </div>
     );
   }
