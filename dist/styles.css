@@ -1,26 +1,65 @@
 body {
 	background-image: url('imgs/sneaker_mesh_fabric.png');
+	font-family: Century Gothic, sans-serif;
+	margin:0px;
+	padding:0px;
+}
+
+p {
 }
 
 .App {
-	width: 70%;
-	margin: auto;
-	display: block;
+	
 }
 
 .App-header {
+	background-color: #0070B2;
+	border-bottom: 2px solid #005090;
+	margin-left: 0px;
+	padding-left: 0px;
+	max-height: 70px;
+
 
 }
 
 .App-logo {
+	max-width: 80px;
+	min-width: 80px;
+	display: inline-block;
+	padding: 5px;
+	padding-left: 15%;
+	max-height: inherit;
+}
 
+img {
+	max-width: 80px;
+	max-height: 80px;
 }
 
 .appTitle {
+
 }
 
 .formContainer {
+	width: 70%;
+	margin: auto;
+	display: block;
+	background-color: #eee;
+	border-radius: 5px;
+	padding-bottom: 1%;
+}
 
+.formContainer h1 {
+	padding-top: 30px;
+}
+
+.formContainer input {
+	height: 30px;
+	width: 40%;
+	border: 2px solid #ccc;
+	border-radius: 2px;
+	font-size: 16px;
+	padding: 0px;
 }
 
 .form {
@@ -28,14 +67,31 @@ body {
 }
 
 .formInstructions {
+	font-size: 20px;
+	color: #333;
 
 }
 
 .appInput {
-
+	min-width: 100%;
+	min-height: 300px;
+	border: 2px solid #ccc;
+	border-radius: 2px;
+	font-size: 16px;
+	line-height: 24px;
 } 
 
 .btn {
+	padding: 15px 17px;
+	background-color: #ddd;
+	border-radius: 5px;
+	font-size: 20px;
+	font-family: Century Gothic, sans-serif;
+	display: block;
+	margin: auto;
+	margin-bottom: 100px;
+	min-height: 50px;
+	box-shadow: 2px 4px 10px #333;
 
 }
 

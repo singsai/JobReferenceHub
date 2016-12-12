@@ -6,7 +6,6 @@ mongoose.connect('mongodb://localhost/reference');
 
 ///////////////////////////// SCHEMA DEFINITIONS ////////////////////////////////
 var userSchema = new Schema({
-  id: Number,
   username: String,
   password: String,
   hash: String,

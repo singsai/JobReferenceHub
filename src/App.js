@@ -88,8 +88,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src="" className="App-logo" alt="logo" />
-          <h2 className="appTitle">Welcome to React</h2>
+          <img src="imgs/logo.png" className="App-logo" alt="logo" />
         </div>
         <div className="formContainer">
           <form className="form" onSubmit={this.handleSubmit}>
