@@ -38,7 +38,7 @@ passport.deserializeUser(function(id, done) {
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use('/', express.static(path.join(__dirname + '../dist')));
+// app.use('/', express.static(path.join(__dirname + '../dist')));
 
 app.use(express.static('dist'));
 app.use('/node_modules', express.static('node_modules'));
