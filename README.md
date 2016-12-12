@@ -33,3 +33,18 @@ In the future, there will be a special link created that emails a reference requ
 >npm run build  
 >mongod  
 >npm start  
+
+## GIT Rebasing: Steps:
+Assuming you have changes to commit from your own local, do Steps 1 and 2 first. Otherwise, skip straight to Step 3:
+`1. git add .`  
+`2. git commit`  
+`3. git checkout -b randomBranchName`  
+`4. git pull --rebase upstream master`  
+### After fixing conflicts
+`5. git add .` *(DO NOT git commit!!)*  
+`6. git rebase --continue`  
+Now, you can merge w/ your local master branch  
+`7. git checkout master`  
+`8. git merge randomBranchName`  
+`9. git push origin master`  
+Now you can do a pull request
