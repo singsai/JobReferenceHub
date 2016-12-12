@@ -49,7 +49,7 @@ class App extends React.Component {
       authorUrl: this.state.authorUrl,
       body: this.state.referenceText,
       header: 'Reference'
-      
+
     }
 
     $.ajax({
@@ -102,16 +102,18 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-      <div>
-        <a href='#' onClick={this.handleAddReferenceClick}>Add Reference </a>
-      </div>
-      { this.state.showProfile ? <Profile /> : (<Form
-            authorHandler={this.handleAuthorNameChange}
-            authorUrlHandler={this.handleAuthorUrlChange}
-            referenceHandler={this.handleReferenceChange}
-            referenceForHandler={this.handleReferenceForChange}
-            handleReferenceSubmit={this.handleReferenceSubmit} />) }
+      <div className="App container">
+        <div className="row">
+          <div className="col-lg-12">
+            <a href='#' onClick={this.handleAddReferenceClick}>Add Reference </a>
+          </div>
+          { this.state.showProfile ? <Profile /> : (<Form
+                authorHandler={this.handleAuthorNameChange}
+                authorUrlHandler={this.handleAuthorUrlChange}
+                referenceHandler={this.handleReferenceChange}
+                referenceForHandler={this.handleReferenceForChange}
+                handleReferenceSubmit={this.handleReferenceSubmit} />) }
+        </div>
       </div>
     );
   }

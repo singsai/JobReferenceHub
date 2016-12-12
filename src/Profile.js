@@ -1,5 +1,5 @@
 // Profile state needs an initial value for "currentUser", which is briefly displayed
-// while the real user's data is being fetched. 
+// while the real user's data is being fetched.
 var defaultData = {
   username: 'loading...',
   firstName: 'loading...',
@@ -60,20 +60,23 @@ class Profile extends React.Component {
 
 
     return (
-      <div className='profContainer'>
-        <p><img className='profImg' src={this.state.currentUser.profileInfo.img}/></p> <br/>
-        <p className='profName'>{this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
-        <p className='profUsername'>@{this.state.currentUser.username}</p> <br/>
-        <p className='profCompany'>Employer: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
-        <p className='profJob'>Position: {this.state.currentUser.profileInfo.role}</p> <br/>
+      <div className='profContainer row'>
+        <div className="col-lg-12">
+          <p><img className='profImg' src={this.state.currentUser.profileInfo.img}/></p> <br/>
+          <p className='profName'>{this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
+          <p className='profUsername'>@{this.state.currentUser.username}</p> <br/>
+          <p className='profCompany'>Employer: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
+          <p className='profJob'>Position: {this.state.currentUser.profileInfo.role}</p> <br/>
 
-        <hr/>
-        <div className='referenceContainer'>
-          {listItems}
+          <hr/>
+        </div>
+        <div className='row'>
+          <div className='referenceContainer col-lg-12'>
+            {listItems}
+          </div>
         </div>
       </div>
-      
+
     )
   }
 }
-
