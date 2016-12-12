@@ -5,6 +5,10 @@ body {
 	padding:0px;
 }
 
+input {
+  color: black;
+}
+
 .App {
 	
 }
