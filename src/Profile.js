@@ -65,7 +65,6 @@ class Profile extends React.Component {
 
 
     return (
-<<<<<<< HEAD
 
       <div className='profContainer'>
         <input id='userSearch' />
@@ -76,22 +75,9 @@ class Profile extends React.Component {
         <p className='profUsername'>@{this.state.currentUser.username}</p> <br/>
         <p className='profCompany'>Employer: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
         <p className='profJob'>Position: {this.state.currentUser.profileInfo.role}</p> <br/>
-=======
-      <div className='profContainer'>
-        <div className="col-lg-12">
-          <p><img className='profImg' src={this.state.currentUser.profileInfo.img}/></p> <br/>
-          <p className='profName'>{this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
-          <p className='profUsername'>@{this.state.currentUser.username}</p> <br/>
-          <p className='profCompany'>Employer: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
-          <p className='profJob'>Position: {this.state.currentUser.profileInfo.role}</p> <br/>
->>>>>>> Change bootstrap 2
-
           <hr/>
-        </div>
-        <div className='row'>
-          <div className='referenceContainer col-lg-12'>
-            {listItems}
-          </div>
+        <div className='referenceContainer col-lg-12'>
+          {listItems}
         </div>
       </div>
 
