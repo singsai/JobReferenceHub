@@ -10,3 +10,6 @@ dist/*.js
 
 db-test-server.js
 db/data/
+
+# Keys #
+keys.js
