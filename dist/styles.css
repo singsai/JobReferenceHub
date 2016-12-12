@@ -1,5 +1,5 @@
 body {
-	background-image: url('imgs/sneaker_mesh_fabric.png');
+	background-image: url('imgs/restaurant.png');
 	font-family: Century Gothic, sans-serif;
 	margin:0px;
 	padding:0px;
@@ -32,37 +32,9 @@ body {
 
 }
 
-.formContainer {
-	width: 70%;
-	margin: auto;
-	display: block;
-	background-color: #eee;
-	border-radius: 5px;
-	padding-bottom: 1%;
-}
 
-.formContainer h1 {
-	padding-top: 30px;
-}
 
-.formContainer input {
-	height: 30px;
-	width: 40%;
-	border: 2px solid #ccc;
-	border-radius: 2px;
-	font-size: 16px;
-	padding: 0px;
-}
 
-.form {
-
-}
-
-.formInstructions {
-	font-size: 20px;
-	color: #333;
-
-}
 
 .appInput {
 	min-width: 100%;
@@ -106,6 +78,7 @@ body {
 
 .profUsername {
   display: inline-block;
+  color: #00c;
 }
 
 .profCompany {
@@ -142,6 +115,89 @@ body {
   margin: 2px;
 }
 
+#userSearch {
+  width: 50%;
+  height: 30px;
+  font-size: 20px;
+}
 
+.searchProfileBtn {
+  padding: 13px 24px;
+  margin-left: 20px;
+  font-size: 20px;
+}
 
+.authorNameForm {
+  display: block;
+  margin-left: 10%;
+
+}
+
+.authorUrlForm {
+  display: block;
+  margin-left: 10%;
+
+}
+
+.referencedUsernameForm {
+  display: block;
+  margin-left: 10%;
+}
+
+.referenceBodyForm {
+  min-height: 300px;
+  width: 80%;
+  display: block;
+  margin: auto;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.referencedUserLbl {
+  display: block;
+  margin-left: 10%;
+  font-size: 20px;
+}
+
+.authorNameLbl {
+  display: inline-block;
+  margin-left: 10%;
+  font-size: 20px;
+}
+
+.authorUrlLbl {
+  display: inline-block;
+  margin-left: 10%;
+  font-size: 20px;
+}
+
+.referenceBodyLbl {
+  display: block;
+  margin-left: 10%;
+  font-size: 20px;
+}
+
+.formContainer {
+  width: 70%;
+  margin: auto;
+  display: block;
+  background-color: #eee;
+  border-radius: 5px;
+  padding-top: 1%;
+  padding-bottom: 1%;
+
+}
+
+.formContainer h1 {
+  padding-top: 30px;
+}
+
+.formContainer input {
+  height: 30px;
+  width: 40%;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  font-size: 16px;
+  padding: 0px;
+}
 
