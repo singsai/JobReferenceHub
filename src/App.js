@@ -105,14 +105,12 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div>
           <Form 
             authorHandler={this.handleAuthorNameChange} 
             authorUrlHandler={this.handleAuthorUrlChange} 
             referenceHandler={this.handleReferenceChange} 
             referenceForHandler={this.handleReferenceForChange} 
-            handleReferenceSubmit={this.handleReferenceSubmit}/>
-        </div>
+            handleReferenceSubmit={this.handleReferenceSubmit}/>        
       </div>         
     );
   }
