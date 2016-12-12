@@ -34,8 +34,9 @@ var userSchema = new Schema({
 var refSchema = new Schema({
   id: Number,
   reference: {
-    authorId: Number, //Author
-    applicantId: Number, //The person this reference is about
+    authorName: String, //should be changed to AuthorId: Number when refactored
+    authorUrl: String, // Stop thinking about the future
+    referenceFor: String, //The person this reference is about — should really be referenceFor:Number
     header: String,
     body: String,
     // May not be used, but potentially worth having.
