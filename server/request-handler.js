@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 module.exports.addUser = function(req, res) {
   var tempUser = new User(req.body);
 
+  console.log('Req.body is :', req.body);
+
   tempUser.save(function(err) {
     if (err) {
       console.log('There has been an error saving this User. Please see the addUser function in request-handler.js. Error is:', err);
@@ -26,8 +28,9 @@ module.exports.findAllUsers = function(req, res) {
   });
 };
 
-module.exports.findUser = function(req, res) {
-  var object = {username: req.body.username, password: req.body.password};
+module.exports.findUser = function(req, res) { 
+  console.log('Params are:', req.params);
+  var object = {username: req.params.username};
   User.find(object, function(err, user) {
     if (err) {
       console.log('There has been an error finding the user. Please see the findUser function in request-handler.js. Error is:', err);
@@ -76,3 +79,9 @@ module.exports.sendInvite = function (req, res) {
   console.log(req.url);
   res.sendStatus(201);
 };
+
+module.exports.destroy = function(req, res) {
+  User.remove({}, function() {
+    res.send(200);
+  });
+}

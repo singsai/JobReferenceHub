@@ -177,12 +177,16 @@ app.post('/login', passport.authenticate('local'), function(req, res) {
   // res.send('received');
 });
 
-app.get('/user', handler.findUser);
+app.get('/user', handler.findAllUsers);
+
+app.get('/user/:username', handler.findUser)
 
 app.post('/addreference',handler.addReference);
 // app.post('/addreference', function(req, res) {
 //   console.log(req.body);
 // });
+
+app.get('/destroyall', handler.destroy);
 
 app.get('/allreferences', handler.findAllReferences);
 
