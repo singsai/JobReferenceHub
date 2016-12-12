@@ -75,13 +75,9 @@ class Profile extends React.Component {
         <p className='profUsername'>@{this.state.currentUser.username}</p> <br/>
         <p className='profCompany'>Employer: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
         <p className='profJob'>Position: {this.state.currentUser.profileInfo.role}</p> <br/>
-
           <hr/>
-        </div>
-        <div className='row'>
-          <div className='referenceContainer col-lg-12'>
-            {listItems}
-          </div>
+        <div className='referenceContainer col-lg-12'>
+          {listItems}
         </div>
       </div>
 

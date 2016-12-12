@@ -105,9 +105,11 @@ class App extends React.Component {
     return (
       <div className="App container">
         <div className="row">
-          <div className="col-lg-12">
+          <div className="col-lg-3">
             <a href='#' onClick={this.handleAddReferenceClick}>{this.state.showProfile ? 'Add Reference' : 'Back to Profile'}</a>
           </div>
+        </div>
+        <div className='row'>
           { this.state.showProfile ? <Profile /> : (<Form
                 authorHandler={this.handleAuthorNameChange}
                 authorUrlHandler={this.handleAuthorUrlChange}
