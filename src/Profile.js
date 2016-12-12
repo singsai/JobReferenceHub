@@ -69,15 +69,17 @@ class Profile extends React.Component {
       <div className='profContainer'>
         <input id='userSearch' />
         <button className='searchProfileBtn' onClick={this.changeUser.bind(this)}>Search</button>
-        <hr/>
+        <hr />
         <p><img className='profImg' src={this.state.currentUser.profileInfo.img}/></p> <br/>
         <p className='profName'>{this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
         <p className='profUsername'>@{this.state.currentUser.username}</p> <br/>
         <p className='profCompany'>Employer: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
         <p className='profJob'>Position: {this.state.currentUser.profileInfo.role}</p> <br/>
-          <hr/>
-        <div className='referenceContainer col-lg-12'>
-          {listItems}
+        <hr/>
+        <div>
+          <div className='referenceContainer'>
+            {listItems}
+          </div>
         </div>
       </div>
 
