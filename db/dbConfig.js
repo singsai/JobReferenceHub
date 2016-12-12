@@ -36,7 +36,8 @@ var refSchema = new Schema({
   authorUsername: String,
   referencedUsername: String, 
   header: String,
-  body: String
+  body: String,
+  authorUrl: String
   
 });
 
