@@ -1,5 +1,5 @@
 body {
-	background-image: url('imgs/restaurant.png');
+	background-image: url('https://66.media.tumblr.com/7d8f4039a914a9c88d3b82ad695b5956/tumblr_o0f1sdpBhJ1us1s18o1_500.gif');
 	font-family: Century Gothic, sans-serif;
 	margin:0px;
 	padding:0px;
@@ -80,7 +80,6 @@ body {
 
 .profUsername {
   display: inline-block;
-  color: #00c;
 }
 
 .profCompany {
@@ -93,6 +92,8 @@ body {
   display: inline-block;
   float: left;
   margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
 }
 
 .profJob {
@@ -110,10 +111,11 @@ body {
   display: block;
   margin: auto;
   width: 70%;
-  background-color: #eee;
+  background-color: #041725;
   margin-top: 10px;
   border-radius: 5px;
   padding: 10px;
+  color: white;
 }
 
 .profContainer p {
