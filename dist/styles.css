@@ -88,15 +88,16 @@ body {
 }
 
 .referenceRepeat {
-  
 }
 
 .referenceHeadline {
-
+  font-size: 24px;
+  text-decoration: underline;
 }
 
 .referenceBody {
-
+  font-size: 16px;
+  font-weight: normal;
 }
 
 .profName {
@@ -115,7 +116,7 @@ body {
   max-width: 200px;
   max-height: 200px;
   display: inline-block;
-
+  float: left;
 }
 
 .profJob {
@@ -132,6 +133,13 @@ body {
   display: block;
   margin: auto;
   width: 70%;
+  background-color: #eee;
+  padding: 10px;
+}
+
+.profContainer p {
+  font-size: 20px;
+  margin: 2px;
 }
 
 

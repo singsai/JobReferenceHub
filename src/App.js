@@ -44,12 +44,12 @@ class App extends React.Component {
   handleReferenceSubmit(event) {
     event.preventDefault();
     var data = {
-      author: this.state.authorName,
-      reference: {
-        referenceFor: this.state.referenceFor,
-        authorUrl: this.state.authorUrl,
-        body: this.state.referenceText
-      }
+      authorUsername: this.state.authorName,
+      referencedUsername: this.state.referenceFor,
+      authorUrl: this.state.authorUrl,
+      body: this.state.referenceText,
+      header: 'Reference'
+      
     }
 
     $.ajax({

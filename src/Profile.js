@@ -62,10 +62,10 @@ class Profile extends React.Component {
     return (
       <div className='profContainer'>
         <p><img className='profImg' src={this.state.currentUser.profileInfo.img}/></p> <br/>
-        <p className='profName'>Name: {this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
-        <p className='profUsername'>Username: {this.state.currentUser.username}</p> <br/>
-        <p className='profCompany'>Current Company: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
-        <p className='profJob'>Job: {this.state.currentUser.profileInfo.role}</p> <br/>
+        <p className='profName'>{this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
+        <p className='profUsername'>@{this.state.currentUser.username}</p> <br/>
+        <p className='profCompany'>Employer: {this.state.currentUser.profileInfo.currentCompany}</p> <br/>
+        <p className='profJob'>Position: {this.state.currentUser.profileInfo.role}</p> <br/>
 
         <hr/>
         <div className='referenceContainer'>
