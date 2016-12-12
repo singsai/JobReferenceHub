@@ -19,6 +19,6 @@ var references = [
 ];
 
 ReactDOM.render(
-  <Profile />,
+  <App />,
   document.getElementById('root')
 );
