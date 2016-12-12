@@ -22,8 +22,8 @@ var userSchema = new Schema({
     role: String,
     // pastEmployers: Array,
     // description: String,
-    joinedAt: {type: Date, default: Date.now},
-  },
+    joinedAt: {type: Date, default: Date.now}
+  }
   //
   // // This stores the references. May need to be modified to make searching for specific
   // // references constant time. Since no person will likely have a large number of refs,

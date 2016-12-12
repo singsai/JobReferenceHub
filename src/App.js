@@ -105,25 +105,9 @@ class App extends React.Component {
             <input className="btn formBtn" type="submit" value="Submit" />
           </form>          
         </div>
-<<<<<<< HEAD
-=======
         <div className="referenceContainer">
           <References references={this.props.references}/>
->>>>>>> mergeKai
-        <div>
-          <References references={this.state.referenceList}/>
-        </div>
       </div>         
     );
   }
-<<<<<<< HEAD
 }
-/*
-        <div>
-          <References references={this.props.references}/>
-        </div>
-*/
-//export default App;
-=======
-}
->>>>>>> mergeKai
