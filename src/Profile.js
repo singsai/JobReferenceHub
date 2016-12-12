@@ -60,7 +60,7 @@ class Profile extends React.Component {
 
 
     return (
-      <div className='profContainer row'>
+      <div className='profContainer'>
         <div className="col-lg-12">
           <p><img className='profImg' src={this.state.currentUser.profileInfo.img}/></p> <br/>
           <p className='profName'>{this.state.currentUser.firstName + ' ' + this.state.currentUser.lastName}</p> <br/>
